@@ -1,10 +1,11 @@
-/*CONFIGURACIÓN GENERAL*/
+/* CONFIGURACIÓN GENERAL */
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 :root {
     /* Centralizo colores y fuentes para facilitar cambios globales */
     --color-primary: #263238;
@@ -17,34 +18,37 @@
 
 body {
     font-family: var(--font-body);
-    background-color:var(--color-white);
+    background-color: var(--color-white);
     color: #1a1a1a;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
+
 h1, h2, h3, .section-title, .hero-title {
     font-family: var(--font-heading);
 }
-main{
+
+main {
     flex: 1;
 }
 
-/*HEADER*/
+/* HEADER */
 
 .main-header {
     width: 100%;
     background-color: var(--color-primary);
-    /*border-bottom: 1px solid #a7b450;*/
 }
 
-
-/*PARTE SUPERIOR*/
+/* PARTE SUPERIOR */
 
 .header-top {
     max-width: 100%;
     margin: 0 auto;
     padding: 16px 20px;
+    display: flex;
+    justify-content: space-between; /* Alinea logo a la izquierda y botón a la derecha en móvil */
+    align-items: center;
 }
 
 .logo-container {
@@ -61,9 +65,7 @@ main{
     object-fit: contain;
 }
 
-
-/*TÍTULOS*/
-/*Contenedor de titulo y eslogan*/
+/* TÍTULOS */
 .titles {
     display: flex;
     flex-direction: column;
@@ -76,7 +78,7 @@ main{
     font-size: 24px;
     font-weight: 600;
     color: var(--color-white);
-    }
+}
 
 .titles h2 {
     font-size: 14px;
@@ -84,18 +86,56 @@ main{
     color: #cfd8dc;
 }
 
+/* BOTÓN HAMBURGUESA */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
 
-/*NAVEGACIÓN*/
+.menu-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Animación a 'X' cuando el menú se abre */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* NAVEGACIÓN (MOBILE FIRST) */
 
 .main-nav {
-    /*border-top: 1px solid #a7b450;*/
+    display: none; /* Oculto por defecto en celulares */
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-nav.active {
+    display: block; /* Se muestra al presionar el botón */
 }
 
 .main-nav ul {
     width: 100%;
     margin: 0 auto;
-    padding: 0 10px 10px;
-
+    padding: 10px 10px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,7 +155,7 @@ main{
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
-    transition: background-color 0.2s ease, color 0.2 ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .main-nav a:hover {
@@ -123,30 +163,33 @@ main{
     background-color: var(--color-primary);
 }
 
-/*Seccion Hero*/
+/* Sección Hero */
 .hero {
     width: 100%;
     background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
     padding: 50px 20px;
     border-bottom: 1px solid #cbd5e1;
 }
-.hero-container{
+
+.hero-container {
     width: 100%;
     margin: 0 auto;
 }
-.hero-content{
+
+.hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 16px;
 }
+
 .hero-tagline {
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #455a64;          /* Tono secundario elegante */
+    color: #455a64;
 }
 
 .hero-title {
@@ -166,7 +209,7 @@ main{
 /* Contenedor de Botones */
 .hero-actions {
     display: flex;
-    flex-direction: column; /* Botones apilados en celular para facilitar el toque */
+    flex-direction: column;
     width: 100%;
     gap: 12px;
     margin-top: 10px;
@@ -185,10 +228,10 @@ main{
 }
 
 .btn:active {
-    transform: scale(0.98); /* Microinteracción táctil al presionar */
+    transform: scale(0.98);
 }
 
-/* Botón primario (destacado) */
+/* Botón primario */
 .btn-primary {
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -198,7 +241,7 @@ main{
     background-color: #1a2327;
 }
 
-/* Botón secundario (bordeado) */
+/* Botón secundario */
 .btn-secondary {
     background-color: transparent;
     color: var(--color-primary);
@@ -210,11 +253,12 @@ main{
     color: var(--color-white);
 }
 
-/*Prevista de especialidades en inicio*/
+/* Prevista de especialidades en inicio */
 .services-preview-section {
     width: 100%;
-    background-color: #f1f5f9; /* Tono de fondo alternado para separar visualmente */
+    background-color: #f1f5f9;
 }
+
 .section-container {
     width: 100%;
     margin: 0 auto;
@@ -226,14 +270,14 @@ main{
     margin-bottom: 35px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra el subtítulo, título y la barrita */
+    align-items: center;
     gap: 8px;
 }
 
 .section-subtitle {
     font-size: 13px;
     font-weight: 700;
-    text-transform: uppercase; /* Fuerza el texto a mayúsculas */
+    text-transform: uppercase;
     letter-spacing: 1.5px;
     color: #546e7a;
 }
@@ -253,6 +297,7 @@ main{
     border-radius: 2px;
     margin-top: 6px;
 }
+
 .services-grid {
     display: flex;
     flex-direction: column;
@@ -302,15 +347,15 @@ main{
     width: 100%;
 }
 
-/*Seccion de menciones index*/
+/* Sección de menciones index */
 .mentions-preview-section {
     width: 100%;
-    background-color: var(--color-white); /* Alterna a blanco tras el fondo gris de Especialidades */
+    background-color: var(--color-white);
 }
 
 .mentions-grid {
     display: flex;
-    flex-direction: column; /* Columna única en móviles */
+    flex-direction: column;
     gap: 20px;
     margin-bottom: 35px;
 }
@@ -322,7 +367,7 @@ main{
     padding: 24px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinea los textos a la izquierda dentro de la card */
+    align-items: flex-start;
     gap: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -334,7 +379,6 @@ main{
     border-color: #cbd5e1;
 }
 
-/* Etiqueta de categoría superior */
 .card-badge {
     font-size: 11px;
     font-weight: 700;
@@ -357,7 +401,7 @@ main{
     font-size: 14px;
     color: #475569;
     line-height: 1.6;
-    flex-grow: 1; /* Asegura que el enlace quede alineado al fondo */
+    flex-grow: 1;
 }
 
 .card-link {
@@ -374,13 +418,13 @@ main{
 
 .card-link:hover {
     color: #000000;
-    gap: 10px; /* Microinteracción al desplazar la flecha */
+    gap: 10px;
 }
 
-/*Seccion de nosotros index*/
+/* Sección de nosotros index */
 .about-preview-section {
     width: 100%;
-    background-color: #f1f5f9; /* Fondo gris claro alternado */
+    background-color: #f1f5f9;
 }
 
 .about-intro {
@@ -398,7 +442,7 @@ main{
 
 .team-grid {
     display: flex;
-    flex-direction: column; /* Columna en móviles */
+    flex-direction: column;
     gap: 24px;
     margin-bottom: 35px;
 }
@@ -407,7 +451,7 @@ main{
     background-color: var(--color-white);
     border-radius: 12px;
     border: 1px solid #e2e8f0;
-    overflow: hidden;      /* Mantiene la foto encuadrada en los bordes redondeados */
+    overflow: hidden;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
@@ -419,18 +463,17 @@ main{
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Espacio reservado para las fotos hasta que el cliente las envíe */
 .team-image-placeholder {
     width: 100%;
     height: 220px;
     background-color: #cbd5e1;
-    overflow: hidden; /* Corta cualquier excedente de la imagen */
+    overflow: hidden;
 }
 
 .team-image-placeholder img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta y recorta la foto proporcionalmente sin deformarla */
+    object-fit: cover;
     display: block;
 }
 
@@ -443,6 +486,7 @@ main{
     text-align: center;
     border-top: 1px solid #e2e8f0;
 }
+
 .team-name {
     font-size: 18px;
     font-weight: 700;
@@ -461,7 +505,7 @@ main{
     line-height: 1.5;
 }
 
-/*Seccion contacto de index*/
+/* Sección contacto de index */
 .location-closing-section {
     width: 100%;
     background-color: var(--color-white);
@@ -470,11 +514,10 @@ main{
 
 .location-closing-grid {
     display: flex;
-    flex-direction: column; /* Apilado en móvil: texto arriba, mapa abajo */
+    flex-direction: column;
     gap: 36px;
 }
 
-/* Columna de Información */
 .closing-info {
     display: flex;
     flex-direction: column;
@@ -494,7 +537,6 @@ main{
     color: #475569;
 }
 
-/* Bloques de Oficina y Horario */
 .closing-details {
     display: flex;
     flex-direction: column;
@@ -534,7 +576,6 @@ main{
     margin-top: 10px;
 }
 
-/* Contenedor del Mapa */
 .map-wrapper {
     width: 100%;
     height: 320px;
@@ -551,19 +592,45 @@ main{
     display: block;
 }
 
-/*FOOTER BASE (MOBILE FIRST)*/
+/*Boton de whatsapp*/
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Asegura que flote sobre todos los demás elementos */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-icon {
+    width: 32px;
+    height: 32px;
+}
+
+/* FOOTER BASE (MOBILE FIRST) */
 
 .main-footer {
     width: 100%;
-    background-color: var(--color-primary); /* Fondo oscuro corporativo */
+    background-color: var(--color-primary);
     color: var(--color-white);
-    /*margin-top: 40px;*/                       /* Separación respecto al contenido superior */
 }
 
 .footer-container {
     width: 100%;
     padding: 40px 20px 20px;
-    /* Layout en móvil: columnas apiladas verticalmente*/
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -579,7 +646,7 @@ main{
     font-size: 18px;
     font-weight: 600;
     color: var(--color-white);
-    border-bottom: 2px solid #37474f;     /* Línea sutil decorativa bajo cada título */
+    border-bottom: 2px solid #37474f;
     padding-bottom: 6px;
     display: inline-block;
 }
@@ -587,10 +654,9 @@ main{
 .footer-text {
     font-size: 14px;
     line-height: 1.6;
-    color: #cfd8dc;                        /* Gris claro para no cansar la vista */
+    color: #cfd8dc;
 }
 
-/* Enlaces del footer */
 .footer-links,
 .footer-contact {
     list-style: none;
@@ -606,13 +672,11 @@ main{
     transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
-/* Microinteracción al pasar el mouse o tocar */
 .footer-links a:hover {
     color: var(--color-white);
-    padding-left: 4px;                     /* Pequeño desplazamiento interactivo */
+    padding-left: 4px;
 }
 
-/* Lista de contacto */
 .footer-contact li {
     font-size: 14px;
     color: #cfd8dc;
@@ -621,9 +685,8 @@ main{
     gap: 8px;
 }
 
-/* Barra inferior */
 .footer-bottom {
-    border-top: 1px solid #37474f;        /* Separador visual */
+    border-top: 1px solid #37474f;
     padding: 16px 20px;
     text-align: center;
 }
@@ -633,17 +696,24 @@ main{
     color: #90a4ae;
 }
 
-/*Terminamos el mobile first y aplicamos cambios a pantallas grandes*/
+/* ==========================================================================
+   DESKTOP / PANTALLAS GRANDES
+   ========================================================================== */
 
-/* A partir de 768px (Tablets y Desktop) */
 @media (min-width: 768px) {
+
+    /* Ocultamos el botón hamburguesa en Desktop */
+    .menu-toggle {
+        display: none;
+    }
 
     .header-top {
         max-width: 1200px;
         padding: 22px 30px;
+        display: block; /* Restaura el comportamiento original para que el contenedor use tu distribución previa */
     }
 
-    /* Cambiamos el layout a fila: Logo a la izquierda, títulos a la derecha */
+    /* Tu disposición original */
     .logo-container {
         flex-direction: row;
         justify-content: space-between;
@@ -654,7 +724,6 @@ main{
         height: 80px;
     }
 
-    /* Títulos crecen y se mantienen centrados el uno con el otro */
     .titles h1 {
         font-size: 35px;
     }
@@ -663,7 +732,12 @@ main{
         font-size: 17px;
     }
 
-    /* La barra de navegación pasa de lista vertical a fila horizontal centrada */
+    /* Aseguramos que la barra de navegación siempre se vea en escritorio */
+    .main-nav {
+        display: block !important;
+        border-top: none;
+    }
+
     .main-nav ul {
         max-width: 1200px;
         flex-direction: row;
@@ -685,37 +759,45 @@ main{
     .main-nav a:hover {
         border-radius: 20px;
     }
-    /*Seccion Hero*/
+
+    /* Sección Hero */
     .hero {
         padding: 80px 30px;
     }
+
     .hero-container {
         max-width: 1200px;
     }
+
     .hero-title {
-        font-size: 42px; /* Tipografía más imponente en escritorio */
+        font-size: 42px;
     }
+
     .hero-description {
         font-size: 18px;
     }
+
     .hero-actions {
-        flex-direction: row;       /* Botones uno al lado del otro */
+        flex-direction: row;
         justify-content: center;
         width: auto;
     }
+
     .services-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
     }
+
     .section-container {
         max-width: 1200px;
         padding: 70px 30px;
     }
 
     .section-title {
-        font-size: 34px; /* Agranda el título en desktop */
+        font-size: 34px;
     }
+
     .mentions-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -726,7 +808,6 @@ main{
         font-size: 17px;
     }
 
-    /* Grilla de 2 columnas centradas para los socios principales */
     .team-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -736,13 +817,12 @@ main{
     }
 
     .team-image-placeholder {
-        height: 260px; /* Un poco más de altura para pantallas de escritorio */
+        height: 260px;
     }
 
-    /*Seccion contacto en index*/
     .location-closing-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Texto a la izquierda, Mapa a la derecha */
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         gap: 50px;
     }
@@ -757,15 +837,14 @@ main{
 
     .map-wrapper {
         height: 100%;
-        min-height: 380px; /* Altura generosa a la par del contenido */
+        min-height: 380px;
     }
-    /*Seccion Footer*/
+
+    /* Footer Desktop */
     .footer-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 50px 30px 30px;
-        
-        /* En pantallas grandes: distribuye las 3 columnas en una fila */
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
@@ -773,6 +852,6 @@ main{
     }
 
     .footer-col {
-        flex: 1; /* Cada una de las 3 columnas toma el mismo ancho disponible */
+        flex: 1;
     }
 }
