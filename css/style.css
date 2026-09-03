@@ -15,7 +15,9 @@
     --font-heading: 'Merriweather', Georgia, serif;       /* Para h1, h2, h3 y títulos */
     --font-body: 'Inter', system-ui, -apple-system, sans-serif; /* Para párrafos, enlaces y botones */
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
     font-family: var(--font-body);
     background-color: var(--color-white);
@@ -60,8 +62,8 @@ main {
 }
 
 .logo-container img {
-    width: 65px;
-    height: 65px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
 }
 
@@ -241,18 +243,15 @@ main {
     background-color: #1a2327;
 }
 
-/* Botón secundario */
 .btn-secondary {
     background-color: transparent;
     color: var(--color-primary);
     border: 1.5px solid var(--color-primary);
 }
-
 .btn-secondary:hover {
     background-color: var(--color-primary);
     color: var(--color-white);
 }
-
 /* Prevista de especialidades en inicio */
 .services-preview-section {
     width: 100%;
@@ -343,7 +342,7 @@ main {
 
 .section-cta-center {
     display: flex;
-    justify-content: center;
+    justify-content:center;
     width: 100%;
 }
 
@@ -359,65 +358,97 @@ main {
     gap: 20px;
     margin-bottom: 35px;
 }
-
 .mention-card {
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
+    position: relative;
     border-radius: 12px;
+    overflow: hidden;                 /* Recorta la imagen y el gradiente en las esquinas */
+    min-height: 380px;                /* Altura para que luzca la foto y el texto abajo */
     padding: 24px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;        /* Empuja el texto al fondo inferior */
     align-items: flex-start;
     gap: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mention-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
-    border-color: #cbd5e1;
+    box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.2);
 }
 
+/* 1. La imagen se vuelve el fondo completo de la tarjeta */
+.card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;               /* Evita que se estire o deforme */
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.mention-card:hover .card-image {
+    transform: scale(1.05);          /* Zoom sutil al pasar el cursor */
+}
+
+/* 2. El degradado de abajo hacia arriba creado con CSS puro */
+.mention-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to top, 
+        rgba(15, 23, 42, 0.95) 0%,   /* Muy oscuro abajo para leer el texto */
+        rgba(15, 23, 42, 0.55) 55%,  /* Semitransparente al medio */
+        rgba(15, 23, 42, 0.10) 100%  /* Despejado arriba para ver la foto */
+    );
+    z-index: 2;
+    pointer-events: none;            /* Permite hacer clic en el enlace sin bloqueos */
+}
+
+/* 3. Todos los textos se colocan por encima del degradado (z-index: 3) */
+.card-badge,
+.card-title,
+.card-link {
+    position: relative;
+    z-index: 3;
+}
+
+/* 4. Colores para contraste sobre fondo oscuro */
 .card-badge {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--color-primary);
-    background-color: #e2e8f0;
-    padding: 4px 10px;
-    border-radius: 20px;
+    color: #ffffff;
+    background-color: #357cce;
+    padding: 7px 7px;
+    border-radius: 5px;
 }
 
 .card-title {
+    color: #ffffff;
     font-size: 18px;
-    font-weight: 600;
-    color: var(--color-primary);
-    line-height: 1.3;
-}
-
-.card-text {
-    font-size: 14px;
-    color: #475569;
-    line-height: 1.6;
-    flex-grow: 1;
+    line-height: 1.35;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para máxima nitidez */
 }
 
 .card-link {
+    color: #93c5fd;                  /* Azul claro para resaltar */
+    text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    color: var(--color-primary);
-    text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 6px;
     transition: color 0.2s ease, gap 0.2s ease;
 }
 
 .card-link:hover {
-    color: #000000;
+    color: #ffffff;
     gap: 10px;
 }
 
@@ -720,8 +751,8 @@ main {
     }
 
     .logo-container img {
-        width: 80px;
-        height: 80px;
+        width: 150px;
+        height: 150px;
     }
 
     .titles h1 {
@@ -785,7 +816,7 @@ main {
 
     .services-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
 
@@ -797,7 +828,12 @@ main {
     .section-title {
         font-size: 34px;
     }
-
+    .section-cta-center{
+        grid-column: 1 / -1;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
     .mentions-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
