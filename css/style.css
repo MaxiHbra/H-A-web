@@ -169,8 +169,12 @@ main {
 /* Sección Hero */
 .hero {
     width: 100%;
-    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-    padding: 50px 20px;
+    background: 
+        linear-gradient(rgba(10, 36, 18, 0.82), rgba(10, 36, 18, 0.88)),
+        url('../images/Index/Portada1.webp') center/cover no-repeat;
+        
+    color: #ffffff;
+    padding: 70px 20px;
     border-bottom: 1px solid #cbd5e1;
 }
 
@@ -184,7 +188,7 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 16px;
+    gap: 36px;
 }
 
 .hero-tagline {
@@ -192,20 +196,21 @@ main {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #455a64;
+    color: #a3e635;
 }
 
 .hero-title {
     font-size: 26px;
     font-weight: 700;
     line-height: 1.25;
-    color: var(--color-text);
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .hero-description {
     font-size: 15px;
     line-height: 1.6;
-    color: #37474f;
+    color: #e2e8f0;
     max-width: 600px;
 }
 
@@ -236,12 +241,14 @@ main {
 
 /* Botón primario */
 .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: #ffffff;
+    color: #0f3d20;
+    font-weight: 700;
+    border: none;
 }
 
 .btn-primary:hover {
-    background-color: #1a2327;
+    background-color: #e2e8f0;
 }
 
 .btn-secondary {
@@ -324,9 +331,10 @@ main {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.service-icon {
-    font-size: 36px;
-    margin-bottom: 4px;
+.service-icon img {
+    width: 100px;
+    height: 120px;
+    display: block;
 }
 
 .service-title {
