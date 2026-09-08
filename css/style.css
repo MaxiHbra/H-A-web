@@ -40,7 +40,8 @@ main {
 
 .main-header {
     width: 100%;
-    background-color: var(--color-primary);
+    /*background-color: var(--color-primary);*/
+    background: linear-gradient(340deg, rgba(10, 50, 25, .97), rgba(24, 82, 43, .97));*/
 }
 
 /* PARTE SUPERIOR */
@@ -587,19 +588,13 @@ main {
     padding: 16px;
     background-color: #f8fafc;
     border-radius: 8px;
-    border-left: 4px solid var(--color-text);
+    border: 1px solid var(--color-text);
 }
 
 .detail-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-}
-
-.detail-icon {
-    font-size: 20px;
-    line-height: 1;
-    margin-top: 2px;
 }
 
 .detail-item strong {
@@ -737,6 +732,141 @@ main {
     font-size: 13px;
     color: #90a4ae;
 }
+
+/*Carreras*/
+.page-hero {
+    width: 100%;
+    background-color: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 50px 20px 45px;
+}
+
+.page-hero-container {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.page-subtitle {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-primary);
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.title-divider {
+    width: 45px;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    margin-bottom: 4px;
+}
+
+.page-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64748b;
+    max-width: 650px;
+}
+
+/* Tarjeta sutil integrada para el Ciclo Básico */
+.ciclo-basico-box {
+    margin-top: 18px;
+    background-color: var(--color-white);
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 22px 26px;
+    text-align: left;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+.ciclo-basico-box h3 {
+    font-size: 18px;
+    color: var(--color-text);
+    margin-bottom: 10px;
+}
+.seccion-carreras {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    margin-bottom:40px;
+}
+
+.seccion-informatica,
+.seccion-automotor {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.seccion-informatica {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 60px;
+}
+
+/* Bloque individual de contenido */
+.bloque-carrera {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.texto-carrera h2 {
+    font-size: 28px;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.texto-carrera h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 45px;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
+
+.texto-carrera p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #475569;
+    text-align: justify;
+    margin-bottom: 14px;
+}
+
+.texto-carrera p:last-child {
+    margin-bottom: 0;
+}
+
+/* Imágenes */
+.bloque-carrera img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
 
 /* ==========================================================================
    DESKTOP / PANTALLAS GRANDES
@@ -900,5 +1030,60 @@ main {
 
     .footer-col {
         flex: 1;
+    }
+    .page-hero {
+        padding: 65px 30px 55px;
+    }
+
+    .page-title {
+        font-size: 40px;
+    }
+
+    .ciclo-basico-box {
+        padding: 26px 32px;
+    }
+
+    .ciclo-basico-box h3 {
+        font-size: 19px;
+    }
+
+    .ciclo-basico-box p {
+        font-size: 15px;
+    }
+    .bloque-carrera {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 45px;
+    }
+
+    .bloque-carrera img {
+        height: 290px;
+    }
+
+    /* En la clase parrafo-der-img-izq la imagen va en la columna 1 y el texto en la 2 */
+    .parrafo-der-img-izq img {
+        order: 1;
+    }
+
+    .parrafo-der-img-izq .texto-carrera {
+        order: 2;
+    }
+
+    /* En parrafo-izq-img-der el texto va en la columna 1 y la imagen en la 2 */
+    .parrafo-izq-img-der .texto-carrera {
+        order: 1;
+    }
+
+    .parrafo-izq-img-der img {
+        order: 2;
+    }
+
+    .texto-carrera h2 {
+        font-size: 34px;
+    }
+
+    .texto-carrera p {
+        font-size: 16px;
     }
 }
